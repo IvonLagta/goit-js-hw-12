@@ -6,6 +6,8 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
+  showLoadMore, 
+  hideLoadMore,
 } from './js/render-functions.js';
 
 const form = document.querySelector('.form');
@@ -32,7 +34,7 @@ form.addEventListener('submit', async event => {
   currentPage = 1;
 
   clearGallery();
-  loadMoreBtn.classList.add('hidden');
+  hideLoadMore();
   showLoader();
 
   try {
@@ -51,7 +53,7 @@ form.addEventListener('submit', async event => {
     createGallery(data.hits);
 
     if (totalHits > 15) {
-      loadMoreBtn.classList.remove('hidden');
+      showLoadMore();
     }
   } catch (error) {
     iziToast.error({
@@ -67,7 +69,7 @@ loadMoreBtn.addEventListener('click', async () => {
   currentPage += 1;
 
   showLoader();
-  loadMoreBtn.classList.add('hidden');
+  hideLoadMore();
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
@@ -81,9 +83,9 @@ loadMoreBtn.addEventListener('click', async () => {
         message: "We're sorry, but you've reached the end of search results.",
         position: 'bottomCenter',
       });
-      loadMoreBtn.classList.add('hidden');
+      hideLoadMore();
     } else {
-      loadMoreBtn.classList.remove('hidden');
+      showLoadMore();
     }
   } catch (error) {
     iziToast.error({
@@ -94,5 +96,3 @@ loadMoreBtn.addEventListener('click', async () => {
     hideLoader();
   }
 });
-
-
