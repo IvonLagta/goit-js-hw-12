@@ -45,8 +45,7 @@ export function hideLoader() {
 }
 
 export function smoothScrollGallery() {
-  const { height: cardHeight } = gallery
-    .firstElementChild.getBoundingClientRect();
+  const { height: cardHeight } = gallery.firstElementChild.getBoundingClientRect();
   window.scrollBy({
     top: cardHeight * 2,
     behavior: 'smooth',
