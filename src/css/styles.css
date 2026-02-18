@@ -152,3 +152,6 @@ body {
 .load-more:hover {
   background-color: #6c8cff;
 }
+.load-more.hidden {
+  display: none;
+}
