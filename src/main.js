@@ -76,6 +76,8 @@ loadMoreBtn.addEventListener('click', async () => {
 
     createGallery(data.hits);
 
+    smoothScrollGallery(); 
+
     const totalLoaded = currentPage * 15;
 
     if (totalLoaded >= totalHits) {
@@ -96,3 +98,4 @@ loadMoreBtn.addEventListener('click', async () => {
     hideLoader();
   }
 });
+
