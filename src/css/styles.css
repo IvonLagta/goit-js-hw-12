@@ -133,6 +133,11 @@ body {
     transform: rotate(360deg);
   }
 }
+
+.hidden {
+  display: none;
+}
+
 .load-more {
   display: block;
   margin: 0 auto 40px;
@@ -146,8 +151,4 @@ body {
 
 .load-more:hover {
   background-color: #6c8cff;
-}
-
-.hidden {
-  display: none;
 }
