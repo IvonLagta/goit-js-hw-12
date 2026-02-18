@@ -6,8 +6,9 @@ import {
   clearGallery,
   showLoader,
   hideLoader,
-  showLoadMore, 
+  showLoadMore,
   hideLoadMore,
+  smoothScrollGallery,
 } from './js/render-functions.js';
 
 const form = document.querySelector('.form');
@@ -39,7 +40,6 @@ form.addEventListener('submit', async event => {
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
-
     totalHits = data.totalHits;
 
     if (data.hits.length === 0) {
@@ -54,6 +54,11 @@ form.addEventListener('submit', async event => {
 
     if (totalHits > 15) {
       showLoadMore();
+    } else {
+      iziToast.info({
+        message: "You've reached the end of search results.",
+        position: 'bottomCenter',
+      });
     }
   } catch (error) {
     iziToast.error({
@@ -73,10 +78,9 @@ loadMoreBtn.addEventListener('click', async () => {
 
   try {
     const data = await getImagesByQuery(currentQuery, currentPage);
-
     createGallery(data.hits);
 
-    smoothScrollGallery(); 
+    smoothScrollGallery();
 
     const totalLoaded = currentPage * 15;
 
@@ -98,4 +102,3 @@ loadMoreBtn.addEventListener('click', async () => {
     hideLoader();
   }
 });
-
