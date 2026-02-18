@@ -43,7 +43,9 @@ export function showLoader() {
 export function hideLoader() {
   loader.classList.remove("is-visible");
 }
-
+if (gallery.firstElementChild) {
+  smoothScrollGallery();
+}
 export function smoothScrollGallery() {
   const { height: cardHeight } = gallery.firstElementChild.getBoundingClientRect();
   window.scrollBy({
@@ -59,3 +61,4 @@ export function showLoadMore() {
 export function hideLoadMore() {
   loadMoreBtn.classList.add('hidden');
 }
+
