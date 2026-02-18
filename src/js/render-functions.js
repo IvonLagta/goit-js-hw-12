@@ -3,9 +3,6 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 
 const gallery = document.querySelector('.gallery');
 const loader = document.querySelector(".loader");
-const loaderText = document.querySelector('.loader-text');
-
-
 const lightbox = new SimpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
@@ -39,10 +36,9 @@ export function clearGallery() {
 }
 
 export function showLoader() {
-  loaderText.classList.remove('hidden');
+  loader.classList.add("is-visible");
 }
 
 export function hideLoader() {
-  loaderText.classList.add('hidden');
+  loader.classList.remove("is-visible");
 }
-
